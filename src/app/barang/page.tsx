@@ -38,15 +38,15 @@ export default function BarangPage() {
             : barangList.filter((b) => b.kategori === filterKategori);
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">Master Data Alat</h1>
+        <div className="space-y-4"> {/* hilangin p-6 biar sejajar sama layout */}
+            <h1 className="text-2xl font-bold">Master Data Alat</h1>
 
-            <div className="mb-4">
-                <label className="mr-2">Filter Kategori:</label>
+            <div>
+                <label className="mr-2 font-medium">Filter Kategori:</label>
                 <select
                     value={filterKategori}
                     onChange={(e) => setFilterKategori(e.target.value)}
-                    className="border px-2 py-1 rounded"
+                    className="border px-2 py-1 rounded-md shadow-sm"
                 >
                     <option value="Semua">Semua</option>
                     <option value="Elektronik">Elektronik</option>

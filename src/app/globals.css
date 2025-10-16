@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* === RESET DAN DASAR === */
 * {
     margin: 0;
@@ -12,7 +11,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7fa;
+    background-color: #f4f6f9;
     color: #333;
 }
 
@@ -25,208 +24,193 @@ body {
 /* === SIDEBAR === */
 .sidebar {
     width: 240px;
-    background-color: #0d284e; /* Warna biru tua solid */
+    background-color: #0d284e;
     color: #a7b3c4;
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 }
 
-.sidebar-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 15px;
-    border-bottom: 1px solid #1a3a69;
-    color: #fff;
-}
-
-    .sidebar-header h2 {
-        font-size: 1.1rem;
-        font-weight: 600;
+    .sidebar h2 {
+        color: #fff;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 2rem;
     }
 
-.sidebar-nav {
-    flex-grow: 1;
-}
-
-    .sidebar-nav ul {
+    .sidebar ul {
         list-style: none;
-        padding-top: 1rem;
+        padding: 0;
     }
 
-    .sidebar-nav li {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+    .sidebar li {
         padding: 12px 20px;
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: 0.2s;
         border-left: 3px solid transparent;
     }
 
-        .sidebar-nav li:hover {
+        .sidebar li:hover,
+        .sidebar li.active {
             background-color: #1a3a69;
             color: #fff;
+            border-left-color: #3b82f6;
         }
 
-        .sidebar-nav li.active {
-            background-color: #1a3a69;
-            color: #fff;
-            border-left: 3px solid #3b82f6; /* Aksen biru */
-        }
-
-.sidebar-footer {
-    padding: 1rem;
-    border-top: 1px solid #1a3a69;
-}
-
-    .sidebar-footer button {
-        width: 30px;
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #a7b3c4;
-        background-color: transparent;
-        color: #a7b3c4;
-        cursor: pointer;
-    }
-
-
-/* === KONTEN UTAMA === */
-.main-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.top-bar {
-    background: #fff;
-    height: 60px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 2rem;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.admin-profile {
-    font-weight: 500;
-    color: #4a5568;
-}
-
+/* === KONTEN === */
 .content {
-    flex-grow: 1;
-    padding: 1.5rem 2rem;
+    flex: 1;
+    background-color: #f4f7fa;
+    padding: 2rem 3rem;
 }
 
-.content-header h1 {
-    font-size: 1.8rem;
-    color: #2d3748;
+.header {
+    margin-bottom: 1.5rem;
 }
 
-.content-header p {
-    color: #718096;
-    margin-top: 4px;
-}
+    .header h1 {
+        font-size: 2rem;
+        color: #1e293b;
+        margin-bottom: 0.3rem;
+    }
 
-/* === TOMBOL AKSI === */
-.action-buttons {
-    display: flex;
+    .header p {
+        color: #64748b;
+    }
+
+/* === STATISTIK GRID === */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
-    margin: 1.5rem 0;
+    margin-bottom: 2rem;
 }
 
-.btn {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-    .btn:hover {
-        opacity: 0.9;
-    }
-
-.btn-green {
-    background-color: #28a745; /* Hijau */
-}
-
-.btn-red {
-    background-color: #dc3545; /* Merah */
-}
-
-/* === KARTU HISTORY === */
-.history-card {
-    background: #fff;
+.stat-card {
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-    .history-card h2 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #2d3748;
-        border-bottom: 1px solid #e2e8f0;
-        padding-bottom: 1rem;
+    .stat-card h3 {
+        font-size: 1rem;
+        color: #64748b;
+        margin-bottom: 0.5rem;
     }
 
-/* === TABS === */
-.tabs {
-    display: flex;
-    border-bottom: 2px solid #e2e8f0;
-    margin-top: 1rem;
-}
-
-.tab-item {
-    padding: 0.8rem 1.2rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 0.95rem;
-    color: #718096;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px; /* Rapatkan dengan border bawah */
-}
-
-    .tab-item.active {
-        color: #3b82f6;
-        border-bottom-color: #3b82f6;
+    .stat-card p {
+        font-size: 1.6rem;
         font-weight: 600;
+        color: #1e293b;
     }
 
-/* === TABEL === */
-.table-container {
-    margin-top: 1rem;
-    overflow-x: auto; /* Untuk responsif di layar kecil */
+    .stat-card.blue {
+        border-left: 5px solid #3b82f6;
+    }
+
+    .stat-card.green {
+        border-left: 5px solid #16a34a;
+    }
+
+    .stat-card.orange {
+        border-left: 5px solid #f59e0b;
+    }
+
+    .stat-card.purple {
+        border-left: 5px solid #9333ea;
+    }
+
+/* === HISTORY TRANSAKSI === */
+.history-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+    .history-section h2 {
+        font-size: 1.3rem;
+        color: #1e293b;
+        margin-bottom: 1rem;
+    }
+
+/* Tabel */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
-th, td {
-    padding: 12px 15px;
+th,
+td {
     text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.9rem;
-    color: #4a5568;
+    padding: 12px 15px;
+    font-size: 0.95rem;
 }
 
 th {
-    background-color: #f8fafc;
+    background-color: #f1f5f9;
+    color: #1e293b;
     font-weight: 600;
-    color: #2d3748;
 }
 
-/* === FOOTER === */
-.content-footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.85rem;
-    color: #a0aec0;
+td {
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Status */
+.success {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.pending {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.failed {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
 }
