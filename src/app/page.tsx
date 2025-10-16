@@ -71,6 +71,9 @@ export default function Home() {
                 {/* Footer */}
                 <footer className="text-center text-sm text-gray-500 py-4 border-t border-gray-200">
                     © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
+                    <div className="bg-blue-500 text-white p-4 rounded">
+                        Test Tailwind
+                    </div>
                 </footer>
             </main>
         </div>
