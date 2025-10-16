@@ -1,87 +1,39 @@
-export default function Dashboard() {
-  return (
-    <div className="dashboard-wrapper">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <h2>📦 Inventory App</h2>
-        <ul>
-          <li className="active">🏠 Dashboard</li>
-          <li>📋 Data Barang</li>
-          <li>📊 Laporan</li>
-          <li>⚙ Pengaturan</li>
-        </ul>
-      </aside>
+import Image from "next/image";
+import Link from "next/link";
 
-      {/* Konten utama */}
-      <main className="content">
-        <header className="header">
-          <h1>Dashboard</h1>
-          <p>Selamat datang di sistem manajemen inventory Anda.</p>
-        </header>
+export default function Home() {
+    return (
+        <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8 gap-8">
+            {/* Logo */}
+            <Image
+                className="dark:invert"
+                src="/next.svg"
+                alt="Next.js logo"
+                width={180}
+                height={38}
+                priority
+            />
 
-        {/* Statistik */}
-        <section className="stat-grid">
-          <div className="stat-card blue">
-            <h3>Total Barang</h3>
-            <p>256</p>
-          </div>
-          <div className="stat-card green">
-            <h3>Barang Masuk</h3>
-            <p>45</p>
-          </div>
-          <div className="stat-card orange">
-            <h3>Barang Keluar</h3>
-            <p>32</p>
-          </div>
-          <div className="stat-card purple">
-            <h3>Pendapatan Hari Ini</h3>
-            <p>Rp 2.450.000</p>
-          </div>
-        </section>
+            {/* Teks sambutan */}
+            <h1 className="text-2xl font-bold text-center">
+                Selamat Datang di Aplikasi Inventori Barang
+            </h1>
+            <p className="text-gray-600 text-center">
+                Kelola dan pantau data alat dan barang dengan mudah 🚀
+            </p>
 
-        {/* History Transaksi */}
-        <section className="history-section">
-          <h2>History Transaksi</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Tanggal</th>
-                <th>ID Transaksi</th>
-                <th>Nama Barang</th>
-                <th>Jumlah</th>
-                <th>Total</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>15 Okt 2025</td>
-                <td>TRX001</td>
-                <td>Keyboard Mechanical</td>
-                <td>2</td>
-                <td>Rp 700.000</td>
-                <td className="success">Selesai</td>
-              </tr>
-              <tr>
-                <td>15 Okt 2025</td>
-                <td>TRX002</td>
-                <td>Mouse Logitech</td>
-                <td>1</td>
-                <td>Rp 250.000</td>
-                <td className="pending">Pending</td>
-              </tr>
-              <tr>
-                <td>14 Okt 2025</td>
-                <td>TRX003</td>
-                <td>Monitor 24”</td>
-                <td>1</td>
-                <td>Rp 1.500.000</td>
-                <td className="success">Selesai</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </main>
-    </div>
-  );
+            {/* Tombol menuju halaman barang */}
+            <Link
+                href="/barang"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+            >
+                Ke Halaman Barang
+            </Link>
+
+            {/* Footer */}
+            <footer className="mt-12 text-sm text-gray-500 text-center">
+                © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
+            </footer>
+        </div>
+    );
 }
