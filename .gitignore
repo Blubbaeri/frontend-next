@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# visual studio local files
+# Visual Studio Copilot cache
 .vs/
