@@ -1,39 +1,78 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
     return (
-        <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8 gap-8">
-            {/* Logo */}
-            <Image
-                className="dark:invert"
-                src="/next.svg"
-                alt="Next.js logo"
-                width={180}
-                height={38}
-                priority
-            />
+        <div className="min-h-screen flex bg-gray-100 text-gray-800">
+            {/* Sidebar */}
+            <aside className="w-64 bg-white shadow-lg flex flex-col justify-between">
+                <div>
+                    <div className="p-6 border-b border-gray-200">
+                        <h2 className="text-2xl font-bold text-indigo-600">Inventori</h2>
+                    </div>
 
-            {/* Teks sambutan */}
-            <h1 className="text-2xl font-bold text-center">
-                Selamat Datang di Aplikasi Inventori Barang
-            </h1>
-            <p className="text-gray-600 text-center">
-                Kelola dan pantau data alat dan barang dengan mudah 🚀
-            </p>
+                    <nav className="p-4">
+                        <ul className="space-y-2">
+                            <li className="px-4 py-2 rounded-lg bg-indigo-100 text-indigo-700 font-semibold cursor-pointer hover:bg-indigo-200 transition">
+                                Dashboard
+                            </li>
+                            <li className="px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 cursor-pointer transition">
+                                Barang
+                            </li>
+                            <li className="px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 cursor-pointer transition">
+                                Riwayat
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
 
-            {/* Tombol menuju halaman barang */}
-            <Link
-                href="/barang"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
-            >
-                Ke Halaman Barang
-            </Link>
+                <div className="p-4 border-t border-gray-200">
+                    <button className="w-full py-2 rounded-lg bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition">
+                        Keluar
+                    </button>
+                </div>
+            </aside>
 
-            {/* Footer */}
-            <footer className="mt-12 text-sm text-gray-500 text-center">
-                © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
-            </footer>
+            {/* Main content */}
+            <main className="flex-1 flex flex-col">
+                {/* Top Bar */}
+                <div className="flex justify-between items-center bg-white shadow px-8 py-4">
+                    <h1 className="text-lg font-semibold">Dashboard Inventori</h1>
+                    <div className="text-gray-600">Halo, <span className="font-medium">Admin 👋</span></div>
+                </div>
+
+                {/* Content Area */}
+                <div className="flex-1 p-8">
+                    <div className="mb-6">
+                        <p className="text-gray-600">
+                            Selamat datang di sistem manajemen inventori barang.
+                        </p>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-4 mb-8">
+                        <Link
+                            href="/barang"
+                            className="px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
+                        >
+                            Ke Halaman Barang
+                        </Link>
+                        <button className="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition">
+                            Logout
+                        </button>
+                    </div>
+
+                    {/* History Card */}
+                    <div className="bg-white shadow-md rounded-xl p-6 border border-gray-200">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Riwayat Terbaru</h2>
+                        <p className="text-gray-500">Belum ada data terbaru.</p>
+                    </div>
+                </div>
+
+                {/* Footer */}
+                <footer className="text-center text-sm text-gray-500 py-4 border-t border-gray-200">
+                    © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
+                </footer>
+            </main>
         </div>
     );
 }
