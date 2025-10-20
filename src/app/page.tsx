@@ -101,11 +101,6 @@ export default function Dashboard() {
                     </tbody>
                 </table>
             </section>
-
-            {/* === Footer === */}
-            <footer className="mt-auto text-sm text-gray-500 text-center">
-                © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
-            </footer>
         </div>
     );
 }
