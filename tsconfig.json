@@ -1,15 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-<<<<<<< HEAD
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-=======
     "lib": [ "dom", "dom.iterable", "esnext" ],
->>>>>>> bepin
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
