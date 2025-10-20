@@ -6,16 +6,15 @@ export default function Home() {
         <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8 gap-8">
             {/* Logo */}
             <Image
-                className="dark:invert"
-                src="/next.svg"
+                src="/logo astra.png"
                 alt="Next.js logo"
-                width={180}
-                height={38}
+                width={230}
+                height={76}
                 priority
             />
 
             {/* Teks sambutan */}
-            <h1 className="text-2xl font-bold text-center">
+            <h1 className="text-2xl font-bold text-center mt-8 text-gray-900">
                 Selamat Datang di Aplikasi Inventori Barang
             </h1>
             <p className="text-gray-600 text-center">
