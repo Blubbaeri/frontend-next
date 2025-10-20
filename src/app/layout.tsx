@@ -34,7 +34,7 @@ export default function RootLayout({
                             Halo, <span className="font-medium">Admin 👋</span>
                         </div>
                     </div>
-
+                        
                     <div className="flex-1 p-8">{children}</div>
 
                     <footer className="text-center text-sm text-gray-500 py-4 border-t border-gray-200">
