@@ -1,4 +1,5 @@
 import "./globals.css";
+<<<<<<< HEAD
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Sidebar from "../components/Sidebar";
@@ -41,6 +42,21 @@ export default function RootLayout({
                         © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
                     </footer>
                 </main>
+=======
+import Navbar from "@/Component/Navbar";
+
+export const metadata = {
+    title: "Peminjaman Alat Produksi",
+    description: "Website prototype peminjaman alat produksi",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="id">
+            <body className="bg-purple-50 text-gray-800">
+                <Navbar />
+                <main className="p-6">{children}</main>
+>>>>>>> eaa2d1959983d329ba5d39407122333b9f68783b
             </body>
         </html>
     );

@@ -2,11 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 /* === RESET DAN DASAR === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+=======
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffff;
+  }
+>>>>>>> eaa2d1959983d329ba5d39407122333b9f68783b
 }
 
 body {
