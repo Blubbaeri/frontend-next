@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
     "target": "esnext",
+<<<<<<< HEAD
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+=======
+    "lib": [ "dom", "dom.iterable", "esnext" ],
+>>>>>>> bepin
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -29,6 +33,7 @@
     ]
   },
   "include": [
+<<<<<<< HEAD
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
@@ -37,4 +42,12 @@
   "exclude": [
     "node_modules"
   ]
+=======
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [ "node_modules" ]
+>>>>>>> bepin
 }

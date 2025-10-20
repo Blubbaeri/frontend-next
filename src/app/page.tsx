@@ -1,27 +1,48 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <h1>Selamat Datang di Home</h1>
+        <div className="font-sans flex flex-col items-center justify-center min-h-screen p-8 gap-8">
+            {/* Logo */}
+            <Image
+                src="/logo astra.png"
+                alt="Next.js logo"
+                width={230}
+                height={76}
+                priority
+            />
 
-            <Link href="/Login">
-                <button
-                    style={{
-                        marginTop: "20px",
-                        padding: "10px 20px",
-                        borderRadius: "8px",
-                        backgroundColor: "#0070f3",
-                        color: "white",
-                        border: "none",
-                        cursor: "pointer",
-                    }}
-                >
-                    Ke Halaman Login
-                </button>
+            {/* Teks sambutan */}
+            <h1 className="text-2xl font-bold text-center mt-8 text-gray-900">
+                Selamat Datang di Aplikasi Inventori Barang
+            </h1>
+            <p className="text-gray-600 text-center">
+                Kelola dan pantau data alat dan barang dengan mudah 🚀
+            </p>
+
+            {/* Tombol menuju halaman barang */}
+            <Link
+                href="/barang"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+            >
+                Ke Halaman Barang
             </Link>
+
+            {/* Tombol menuju halaman login */}
+            <Link
+                href="/Login"
+                className="mt-4 bg-gray-100 text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-200 transition font-medium"
+            >
+                Ke Halaman Login
+            </Link>
+
+            {/* Footer */}
+            <footer className="mt-12 text-sm text-gray-500 text-center">
+                © {new Date().getFullYear()} Sistem Inventori — Next.js + Tailwind
+            </footer>
         </div>
     );
 }
