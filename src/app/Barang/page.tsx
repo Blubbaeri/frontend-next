@@ -1,22 +1,62 @@
 ﻿"use client";
-import CardBarang from "@/Component/CardBarang";
-import { useState } from "react";
+import React, { useState } from "react";
+import FormBarang from "@/components/FormBarang";
+import TableBarang from "@/components/TabelBarang";
 
-export default function Barang() {
-    const [barang, setBarang] = useState([
-        { id: 1, nama: "Bor Listrik", stok: 3 },
-        { id: 2, nama: "Gergaji Mesin", stok: 5 },
-        { id: 3, nama: "Mesin Las", stok: 2 },
+interface Barang {
+    id: string;
+    nama: string;
+    kategori: string;
+    qty: number;
+    satuan: string;
+    status: string;
+}
+
+export default function BarangPage() {
+    const [barangList, setBarangList] = useState<Barang[]>([
+        { id: "A001", nama: "Laptop ASUS", kategori: "Elektronik", qty: 5, satuan: "Unit", status: "Tersedia" },
+        { id: "A002", nama: "Proyektor", kategori: "Elektronik", qty: 2, satuan: "Unit", status: "Dipinjam" },
     ]);
 
+    const [filterKategori, setFilterKategori] = useState<string>("Semua");
+
+    const handleAddBarang = (barangBaru: Barang) => {
+        setBarangList([...barangList, barangBaru]);
+    };
+
+    const handleUpdateStatus = (id: string, statusBaru: string) => {
+        setBarangList((prevList) =>
+            prevList.map((b) =>
+                b.id === id ? { ...b, status: statusBaru } : b
+            )
+        );
+    };
+
+    const filteredBarang =
+        filterKategori === "Semua"
+            ? barangList
+            : barangList.filter((b) => b.kategori === filterKategori);
+
     return (
-        <div>
-            <h2 className="text-2xl font-semibold mb-4 text-purple-700">Daftar Alat Produksi</h2>
-            <div className="grid md:grid-cols-3 gap-4">
-                {barang.map((item) => (
-                    <CardBarang key={item.id} nama={item.nama} stok={item.stok} />
-                ))}
+        <div className="p-6">
+            <h1 className="text-2xl font-bold mb-4">Master Data Alat</h1>
+
+            <div className="mb-4">
+                <label className="mr-2">Filter Kategori:</label>
+                <select
+                    value={filterKategori}
+                    onChange={(e) => setFilterKategori(e.target.value)}
+                    className="border px-2 py-1 rounded"
+                >
+                    <option value="Semua">Semua</option>
+                    <option value="Elektronik">Elektronik</option>
+                    <option value="Alat Tulis">Alat Tulis</option>
+                    <option value="Laboratorium">Laboratorium</option>
+                </select>
             </div>
+
+            <FormBarang onAddBarang={handleAddBarang} />
+            <TableBarang data={filteredBarang} onUpdateStatus={handleUpdateStatus} />
         </div>
     );
 }
