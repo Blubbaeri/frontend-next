@@ -14,7 +14,7 @@ export default function Peminjaman() {
     };
 
     return (
-        <section>
+        <section className="p-8">
             <h2 className="text-2xl font-semibold mb-4 text-purple-700">Form Peminjaman</h2>
             <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
                 <input

@@ -8,7 +8,7 @@ export default function Riwayat() {
     ];
 
     return (
-        <section>
+        <section className="p-8">
             <h2 className="text-2xl font-semibold mb-4 text-purple-700">Riwayat Peminjaman</h2>
             <div className="space-y-3">
                 {data.map((item) => (

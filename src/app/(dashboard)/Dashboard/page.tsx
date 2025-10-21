@@ -2,26 +2,27 @@
 
 export default function DashboardPage() {
     return (
-        <div className="font-sans flex flex-col items-center min-h-screen bg-purple-50 p-8 gap-12">
+        <div className="font-sans flex flex-col items-center w-full h-full bg-purple-50 p-8 gap-12 overflow-hidden">
             {/* === Statistik Section === */}
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mt-10">
-                <div className="bg-blue-600 text-white rounded-xl p-6 shadow-md hover:scale-105 transition-transform">
-                    <h3 className="text-lg font-semibold">Total Barang</h3>
-                    <p className="text-3xl font-bold mt-2">256</p>
+            <section className="grid grid-cols-4 gap-6 w-full max-w-6xl">
+                <div className="stat-card blue">
+                    <h3>Total Barang</h3>
+                    <p>256</p>
                 </div>
-                <div className="bg-green-500 text-white rounded-xl p-6 shadow-md hover:scale-105 transition-transform">
-                    <h3 className="text-lg font-semibold">Barang Masuk</h3>
-                    <p className="text-3xl font-bold mt-2">45</p>
+                <div className="stat-card green">
+                    <h3>Barang Masuk</h3>
+                    <p>45</p>
                 </div>
-                <div className="bg-orange-400 text-white rounded-xl p-6 shadow-md hover:scale-105 transition-transform">
-                    <h3 className="text-lg font-semibold">Barang Keluar</h3>
-                    <p className="text-3xl font-bold mt-2">32</p>
+                <div className="stat-card orange">
+                    <h3>Barang Keluar</h3>
+                    <p>32</p>
                 </div>
-                <div className="bg-purple-600 text-white rounded-xl p-6 shadow-md hover:scale-105 transition-transform">
-                    <h3 className="text-lg font-semibold">Pendapatan Hari Ini</h3>
-                    <p className="text-3xl font-bold mt-2">Rp 2.450.000</p>
+                <div className="stat-card purple">
+                    <h3>Pendapatan Hari Ini</h3>
+                    <p>Rp 2.450.000</p>
                 </div>
             </section>
+
 
             {/* === History Transaksi === */}
             <section className="bg-white p-6 rounded-xl shadow-md w-full max-w-6xl mb-12">
