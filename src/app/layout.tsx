@@ -1,8 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Sidebar from "../components/Sidebar";
-import Navbar from "@/Component/Navbar";
+import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,31 +22,30 @@ export default function RootLayout({
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </head>
 
-            <body
-                className={`${inter.className} min-h-screen flex bg-gray-100 text-gray-800`}
-            >
-                {/* Sidebar kiri */}
+            {/* === BODY === */}
+            <body className={`${inter.className} h-screen overflow-hidden flex bg-gray-100 text-gray-800`}>
+                {/* === SIDEBAR === */}
                 <Sidebar />
 
-                {/* Area utama */}
-                <main className="flex-1 flex flex-col">
-                    {/* Navbar atas */}
+                {/* === AREA UTAMA === */}
+                <main className="flex-1 flex flex-col h-full overflow-hidden">
+                    {/* === NAVBAR === */}
                     <div className="bg-white shadow px-8 py-4 flex justify-between items-center">
-                        <h1 className="text-lg font-semibold">
-                            Dashboard Sistem
-                        </h1>
-                        <Navbar />
+                        <h1 className="text-lg font-semibold">Dashboard Sistem</h1>
                     </div>
 
-                    {/* Konten utama */}
-                    <div className="flex-1 p-8 bg-purple-50">{children}</div>
+                    {/* === KONTEN HALAMAN === */}
+                    <div className="flex-1 overflow-hidden bg-purple-50">
+                        {children}
+                    </div>
 
-                    {/* Footer */}
+                    {/* === FOOTER === */}
                     <footer className="text-center text-sm text-gray-500 py-4 border-t border-gray-200 bg-white">
                         © {new Date().getFullYear()} Sistem Inventori & Peminjaman — Next.js + Tailwind
                     </footer>
                 </main>
             </body>
+
         </html>
     );
 }

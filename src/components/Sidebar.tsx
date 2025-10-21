@@ -16,12 +16,14 @@ export default function Sidebar() {
     return (
         <aside className="w-64 bg-gray-900 text-white flex flex-col justify-between shadow-lg">
             <div>
+                {/* Header Sidebar */}
                 <div className="p-6 border-b border-gray-700">
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
                         📦 Inventori
                     </h2>
                 </div>
 
+                {/* Menu Navigasi */}
                 <nav className="p-4">
                     <ul className="space-y-2">
                         {menuItems.map((item) => {
@@ -47,6 +49,7 @@ export default function Sidebar() {
                 </nav>
             </div>
 
+            {/* Tombol Logout */}
             <div className="p-4 border-t border-gray-700">
                 <button className="w-full py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
                     Keluar
