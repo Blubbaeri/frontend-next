@@ -1,5 +1,5 @@
 ﻿"use client";
-import RiwayatBarang from "@/Component/RiwayatBarang";
+import RiwayatBarang from "@/components/RiwayatBarang";
 
 export default function Riwayat() {
     const data = [
