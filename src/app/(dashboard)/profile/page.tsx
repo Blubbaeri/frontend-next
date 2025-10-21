@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Cropper from "react-easy-crop";
 import { getAuthToken } from "@/utils/auth";
 
 interface UserProfile {
@@ -22,10 +23,16 @@ export default function ProfilePage() {
   const [success, setSuccess] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // cropper
+  const [image, setImage] = useState<string | null>(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
+
   useEffect(() => {
     const token = getAuthToken();
     if (token) {
-      // TODO: Fetch user data dari backend pake token
+      // TODO: fetch profile from backend pake token
     }
   }, []);
 
@@ -38,30 +45,94 @@ export default function ProfilePage() {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = () => {
-        setForm((prev) => ({ ...prev, photo: reader.result as string }));
-      };
+      reader.onload = () => setImage(reader.result as string);
       reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // cropper helper
+  const createImage = (url: string): Promise<HTMLImageElement> =>
+    new Promise((resolve, reject) => {
+      const image = new Image();
+      image.addEventListener("load", () => resolve(image));
+      image.addEventListener("error", (error) => reject(error));
+      image.setAttribute("crossOrigin", "anonymous");
+      image.src = url;
+    });
+
+  const getCroppedImg = async (imageSrc: string, pixelCrop: any): Promise<string | null> => {
+    const image = await createImage(imageSrc);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+
+    const maxSize = Math.max(image.width, image.height);
+    const safeArea = 2 * ((maxSize / 2) * Math.sqrt(2));
+    canvas.width = safeArea;
+    canvas.height = safeArea;
+
+    ctx.drawImage(
+      image,
+      safeArea / 2 - image.width / 2,
+      safeArea / 2 - image.height / 2
+    );
+
+    const data = ctx.getImageData(0, 0, safeArea, safeArea);
+    canvas.width = pixelCrop.width;
+    canvas.height = pixelCrop.height;
+
+    ctx.putImageData(
+      data,
+      Math.round(0 - safeArea / 2 + image.width / 2 - pixelCrop.x),
+      Math.round(0 - safeArea / 2 + image.height / 2 - pixelCrop.y)
+    );
+
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => {
+        if (!blob) return resolve(null);
+        resolve(URL.createObjectURL(blob));
+      }, "image/jpeg");
+    });
+  };
+
+  const onCropComplete = useCallback((_: any, croppedAreaPixels: any) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!form.name || !form.email) {
       setError("Nama dan email harus diisi!");
       return;
     }
-    setProfile({ ...form });
+
+    let newPhoto = form.photo;
+    if (image && croppedAreaPixels) {
+      const cropped = await getCroppedImg(image, croppedAreaPixels);
+      if (cropped) newPhoto = cropped;
+    }
+
+    setProfile({
+      name: form.name,
+      email: form.email,
+      photo: newPhoto,
+    });
+
     setSuccess("Profil berhasil diperbarui!");
     setError("");
-    setIsModalOpen(false); // tutup modal
+    setImage(null);
+
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 300);
   };
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Profil Saya</h1>
 
-      {/* 📋 Card Profil */}
+      {/* Profil Card */}
       <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-md flex items-center gap-6 justify-between">
         <div className="flex items-center gap-6">
           <img
@@ -82,7 +153,7 @@ export default function ProfilePage() {
         </button>
       </div>
 
-      {/* 🪟 Modal Edit Profil */}
+      {/* Modal Edit Profil */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -102,6 +173,7 @@ export default function ProfilePage() {
             >
               <h2 className="text-lg font-semibold mb-3">Edit Profil</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Foto Profil */}
                 <div>
                   <label className="text-sm text-gray-700 block mb-1">
                     Foto Profil
@@ -112,15 +184,30 @@ export default function ProfilePage() {
                     onChange={handlePhotoChange}
                     className="block text-sm text-gray-700"
                   />
-                  {form.photo && (
+                  {form.photo && !image && (
                     <img
                       src={form.photo}
                       alt="Preview"
-                      className="w-20 h-20 rounded-full object-cover mt-2 border border-gray-300"
+                      className="w-20 h-20 rounded-full object-cover mt-2 border border-gray-300 mx-auto"
                     />
                   )}
                 </div>
 
+                {image && (
+                  <div className="relative w-full h-64 bg-black mt-3 rounded-lg overflow-hidden">
+                    <Cropper
+                      image={image}
+                      crop={crop}
+                      zoom={zoom}
+                      aspect={1}
+                      onCropChange={setCrop}
+                      onZoomChange={setZoom}
+                      onCropComplete={onCropComplete}
+                    />
+                  </div>
+                )}
+
+                {/* Input nama & email */}
                 <div>
                   <label className="text-sm text-gray-700 block mb-1">
                     Nama
