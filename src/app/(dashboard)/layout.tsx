@@ -1,3 +1,4 @@
+
 "use client";
 
 import "../globals.css";
@@ -8,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import { Bell, User, Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePopper } from "react-popper";
+import Link from "next/link"; // Tambah import Link
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -230,11 +232,13 @@ export default function DashboardLayout({
                     </AnimatePresence>
                   </div>
                   <div className="relative flex items-center">
-                    <User
-                      size={22}
+                    <Link
+                      href="/profile"
                       className="cursor-pointer hover:text-purple-600 transition"
                       aria-label="Buka profil"
-                    />
+                    >
+                      <User size={22} />
+                    </Link>
                   </div>
                 </div>
               </div>
