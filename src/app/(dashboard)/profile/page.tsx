@@ -13,7 +13,7 @@ interface UserProfile {
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState<UserProfile>({
-    name: "Budi Santoso",
+    name: "Arsalan Muflih",
     email: "admin@email.com",
     photo: "/default-avatar.png",
   });

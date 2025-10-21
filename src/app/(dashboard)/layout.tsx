@@ -203,7 +203,7 @@ export default function DashboardLayout({
                             notifications.map((notif) => (
                               <div
                                 key={notif.id}
-                                className="flex items-center gap-3 p-3 rounded-lg text-sm bg-white hover:bg-purple-100 transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-600"
+                                className="flex items-center gap-3 p-3  text-sm bg-white hover:bg-purple-100 transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-600"
                                 tabIndex={0}
                                 onClick={() => {
                                   console.log(`Clicked: ${notif.message}`);
