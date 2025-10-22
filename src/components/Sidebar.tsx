@@ -15,18 +15,6 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
 
-  // Cleanup atribut Bitwarden
-  useEffect(() => {
-    document.querySelectorAll('[bis_skin_checked]').forEach((el) => {
-      el.removeAttribute('bis_skin_checked');
-    });
-    document.querySelectorAll('[__processed_531946c1-2ab7-41d0-a706-1446dca4a370__]').forEach((el) => {
-      el.removeAttribute('__processed_531946c1-2ab7-41d0-a706-1446dca4a370__');
-    });
-    document.querySelectorAll('[bis_register]').forEach((el) => {
-      el.removeAttribute('bis_register');
-    });
-  }, []);
 
   // Cek mobile
   useEffect(() => {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion"; // ✨ import animasi
+import { motion } from "framer-motion"; //import animasi
 
 export default function IntroPage() {
     return (
@@ -11,7 +11,7 @@ export default function IntroPage() {
                 className="text-center"
                 initial={{ opacity: 0, y: 30 }}     // mulai agak turun & transparan
                 animate={{ opacity: 1, y: 0 }}      // naik ke posisi normal
-                transition={{ duration: 0.8, ease: "easeOut" }} // animasi halus
+                transition={{ duration: 0.8, ease: "easeOut" }} // animasi 
             >
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}

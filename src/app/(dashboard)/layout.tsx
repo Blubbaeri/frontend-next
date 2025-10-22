@@ -27,19 +27,6 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const isIntroPage = pathname.includes("/intro");
 
-  // Cleanup atribut Bitwarden
-  useEffect(() => {
-    document.querySelectorAll('[bis_skin_checked]').forEach((el) => {
-      el.removeAttribute('bis_skin_checked');
-    });
-    document.querySelectorAll('[__processed_531946c1-2ab7-41d0-a706-1446dca4a370__]').forEach((el) => {
-      el.removeAttribute('__processed_531946c1-2ab7-41d0-a706-1446dca4a370__');
-    });
-    document.querySelectorAll('[bis_register]').forEach((el) => {
-      el.removeAttribute('bis_register');
-    });
-  }, []);
-
   // Sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [mounted, setMounted] = useState(false);
